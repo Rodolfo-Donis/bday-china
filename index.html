@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday — February 28</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preload" href="assets/pochita.png" as="image">
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0">
+    <defs>
+      <filter id="remove-white" color-interpolation-filters="sRGB">
+        <feColorMatrix type="matrix" in="SourceGraphic" result="luma" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.2126 0.7152 0.0722 0 0" />
+        <feComponentTransfer in="luma" result="mask">
+          <feFuncA type="discrete" tableValues="1 1 1 1 1 1 1 1 1 0" />
+        </feComponentTransfer>
+        <feComposite in="SourceGraphic" in2="mask" operator="in" />
+      </filter>
+    </defs>
+  </svg>
+</head>
+<body>
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero" class="hero">
+    <div class="particles" id="particles" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">FELIZ CUMPLEAÑOS</h1>
+      <p class="hero-subtitle">Hay cosas que el corazon nunca olvida…</p>
+      <button type="button" class="btn-play" id="btnPlay" aria-label="Play a little game">
+        gordis... presioname
+      </button>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span class="scroll-arrow"></span>
+    </div>
+  </section>
+
+  <!-- ========== MINI GAME SECTION ========== -->
+  <section id="game" class="game-section">
+    <div class="game-container">
+      <h2 class="game-title">Atrapal a los Pochita</h2>
+      <p class="game-instruction">Atrapa  17 Pochitas antes del tiempo</p>
+      <div class="game-stats">
+        <span class="stat caught-count">Atrapados: <strong id="heartsCount">0</strong>/17</span>
+        <span class="stat time-left">Time: <strong id="timeLeft">55</strong>s</span>
+      </div>
+      <div class="game-area" id="gameArea">
+        <!-- Pochitas will be injected by JS -->
+      </div>
+      <div class="game-message" id="gameMessage" aria-live="polite">
+        <p class="message-text" id="messageText"></p>
+        <button type="button" class="btn-retry" id="btnRetry" hidden>Otra vez gordis</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== LETTER REVEAL SECTION ========== -->
+  <section id="letter" class="letter-section" aria-hidden="true" hidden>
+    <div class="envelope-container" id="envelopeContainer">
+      <div class="envelope" id="envelope">
+        <div class="envelope-flap"></div>
+        <div class="envelope-body"></div>
+      </div>
+      <div class="letter-container" id="letterContainer">
+        <div class="letter-paper">
+          <div class="letter-content">
+            <p class="letter-greeting" id="letterGreeting"></p>
+            <p class="letter-body" id="letterBody"></p>
+            <p class="letter-signature" id="letterSignature"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="confetti-container" id="confettiContainer" aria-hidden="true"></div>
+  </section>
+
+  <!-- Optional: Ambient music (muted until user interaction for browser compatibility) -->
+  <audio id="ambientMusic" loop preload="auto" muted>
+    <!-- Add your own audio file path here, e.g. src="ambient.mp3" -->
+    <source src="" type="audio/mpeg">
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
