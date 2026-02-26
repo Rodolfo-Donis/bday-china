@@ -7,7 +7,7 @@
 const LETTER_CONFIG = {
   greeting: 'Hola mi gordita,',
   letterFilePath: 'letter.txt',
-  signature: 'It was always you...,
+  signature: 'It was always you...'
 };
 
 /* Cached letter body content (loaded from letter.txt) */
