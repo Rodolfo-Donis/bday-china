@@ -7,7 +7,7 @@
 const LETTER_CONFIG = {
   greeting: 'Hola mi gordita,',
   letterFilePath: 'letter.txt',
-  signature: 'Some stories don\'t end… they transform.',
+  signature: 'It was always you...,
 };
 
 /* Cached letter body content (loaded from letter.txt) */
@@ -40,6 +40,7 @@ const letterGreeting = document.getElementById('letterGreeting');
 const letterBody = document.getElementById('letterBody');
 const letterSignature = document.getElementById('letterSignature');
 const confettiContainer = document.getElementById('confettiContainer');
+const photoFinaleSection = document.getElementById('photoFinale');
 const ambientMusic = document.getElementById('ambientMusic');
 const particlesContainer = document.getElementById('particles');
 
@@ -384,9 +385,22 @@ function startTypingAnimation() {
       setTimeout(typeNextChar, char === '\n' ? typingSpeed * 2 : typingSpeed);
     } else {
       letterBody.innerHTML = fullText.replace(/\n/g, '<br>');
+      revealPhotoFinale();
     }
   }
   typeNextChar();
+}
+
+/**
+ * Reveals the photo finale section with romantic transition
+ */
+function revealPhotoFinale() {
+  photoFinaleSection.hidden = false;
+  photoFinaleSection.setAttribute('aria-hidden', 'false');
+  setTimeout(() => {
+    photoFinaleSection.classList.add('visible');
+    photoFinaleSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 100);
 }
 
 /* ========== Run ========== */

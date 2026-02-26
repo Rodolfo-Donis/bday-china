@@ -553,6 +553,106 @@ body {
   }
 }
 
+/* ========== Photo Finale Section ========== */
+.photo-finale-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: var(--violet-gradient);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.photo-finale-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, var(--pink-glow) 0%, transparent 50%);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.photo-finale-section.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.photo-finale-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  max-width: 600px;
+}
+
+.photo-finale-image-wrap {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), 0 0 60px var(--pink-glow);
+  animation: photo-reveal 1.5s ease-out forwards;
+}
+
+.photo-finale-image-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 3px solid rgba(232, 160, 191, 0.3);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.photo-finale-image {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  vertical-align: middle;
+}
+
+.photo-finale-message {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.8;
+  text-align: center;
+  color: #fff;
+  background: rgba(15, 12, 41, 0.5);
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(232, 160, 191, 0.2);
+  backdrop-filter: blur(10px);
+  animation: message-fade-in 1s ease-out 0.5s both;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes photo-reveal {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes message-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ========== Responsive ========== */
 @media (max-width: 480px) {
   .game-area {
@@ -578,5 +678,10 @@ body {
     border-left-width: 120px;
     border-right-width: 120px;
     border-top-width: 75px;
+  }
+
+  .photo-finale-message {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.95rem;
   }
 }
